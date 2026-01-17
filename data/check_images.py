@@ -32,7 +32,7 @@ from print_functions_for_lab_checks import *
 # Imports functions created for this program
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
-# from classify_images import classify_images
+from classify_images import classify_images
 # from adjust_results4_isadog import adjust_results4_isadog
 # from calculates_results_stats import calculates_results_stats
 # from print_results import print_results
@@ -42,21 +42,10 @@ def main():
     start_time = time.perf_counter()
     
     in_arg = get_input_args()
-    pet_labels = get_pet_labels(in_arg.dir)
+    results = get_pet_labels(in_arg.dir)
 
-
-    # TODO 3: Define classify_images function within the file classiy_images.py
-    # Once the classify_images function has been defined replace first 'None' 
-    # in the function call with in_arg.dir and replace the last 'None' in the
-    # function call with in_arg.arch  Once you have done the replacements your
-    # function call should look like this: 
-    #             classify_images(in_arg.dir, results, in_arg.arch)
-    # Creates Classifier Labels with classifier function, Compares Labels, 
-    # and adds these results to the results dictionary - results
-    # classify_images(None, results, None)
-
-    # Function that checks Results Dictionary using results    
-    # check_classifying_images(results)    
+    classify_images(in_arg.dir, results, in_arg.arch)
+    check_classifying_images(results) 
 
     # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
     # Once the adjust_results4_isadog function has been defined replace 'None' 
