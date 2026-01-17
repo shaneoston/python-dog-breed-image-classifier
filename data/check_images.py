@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/check_images.py
 #
-# TODO 0: Add your information below for Programmer & Date Created.                                                                             
 # PROGRAMMER: Shane Oston Stowe
 # DATE CREATED: 2026-01-06
 # REVISED DATE: 
@@ -24,15 +23,15 @@
 ##
 
 # Imports python modules
-# from time import time as time_module, sleep
+# DELETE: from time import time as time_module, sleep
 import time
 
 # Imports print functions that check the lab
 from print_functions_for_lab_checks import *
 
 # Imports functions created for this program
-# from get_input_args import get_input_args
-# from get_pet_labels import get_pet_labels
+from get_input_args import get_input_args
+from get_pet_labels import get_pet_labels
 # from classify_images import classify_images
 # from adjust_results4_isadog import adjust_results4_isadog
 # from calculates_results_stats import calculates_results_stats
@@ -42,28 +41,8 @@ from print_functions_for_lab_checks import *
 def main():
     start_time = time.perf_counter()
     
-    # TODO 1: Define get_input_args function within the file get_input_args.py
-    # This function retrieves 3 Command Line Arugments from user as input from
-    # the user running the program from a terminal window. This function returns
-    # the collection of these command line arguments from the function call as
-    # the variable in_arg
-    # in_arg = get_input_args()
-
-    # Function that checks command line arguments using in_arg  
-    # check_command_line_arguments(in_arg)
-
-    
-    # TODO 2: Define get_pet_labels function within the file get_pet_labels.py
-    # Once the get_pet_labels function has been defined replace 'None' 
-    # in the function call with in_arg.dir  Once you have done the replacements
-    # your function call should look like this: 
-    #             get_pet_labels(in_arg.dir)
-    # This function creates the results dictionary that contains the results, 
-    # this dictionary is returned from the function call as the variable results
-    # results = get_pet_labels(None)
-
-    # Function that checks Pet Images in the results Dictionary using results    
-    # check_creating_pet_image_labels(results)
+    in_arg = get_input_args()
+    pet_labels = get_pet_labels(in_arg.dir)
 
 
     # TODO 3: Define classify_images function within the file classiy_images.py
@@ -79,7 +58,6 @@ def main():
     # Function that checks Results Dictionary using results    
     # check_classifying_images(results)    
 
-    
     # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
     # Once the adjust_results4_isadog function has been defined replace 'None' 
     # in the function call with in_arg.dogfile  Once you have done the 
