@@ -53,22 +53,15 @@ def main():
     results_stats = calculates_results_stats(results)
     check_calculating_results(results, results_stats)
 
-
-    # TODO 6: Define print_results function within the file print_results.py
-    # Once the print_results function has been defined replace 'None' 
-    # in the function call with in_arg.arch  Once you have done the 
-    # replacements your function call should look like this: 
-    #      print_results(results, results_stats, in_arg.arch, True, True)
-    # Prints summary results, incorrect classifications of dogs (if requested)
-    # and incorrectly classified breeds (if requested)
-    # print_results(results, results_stats, None, True, True)
+    print_results(results, results_stats, in_arg.arch, True, True)
     
     end_time = time.perf_counter()
-    
     tot_time = end_time - start_time
+    hours = int(tot_time // 3600)
+    minutes = int((tot_time % 3600) // 60)
+    seconds = int(round((tot_time % 3600) % 60))
     print("\n** Total Elapsed Runtime:",
-          str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
-          +str(int((tot_time%3600)%60)) )
+          str(hours)+":"+str(minutes)+":"+str(seconds))
     
 
 # Call to main function to run the program
