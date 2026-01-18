@@ -3,11 +3,12 @@ from PIL import Image
 import torchvision.transforms as transforms
 from torch.autograd import Variable
 import torchvision.models as models
+from torchvision.models import ResNet18_Weights, AlexNet_Weights, VGG16_Weights
 from torch import __version__
 
-resnet18 = models.resnet18(pretrained=True)
-alexnet = models.alexnet(pretrained=True)
-vgg16 = models.vgg16(pretrained=True)
+resnet18 = models.resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
+alexnet = models.alexnet(weights=AlexNet_Weights.IMAGENET1K_V1)
+vgg16 = models.vgg16(weights=VGG16_Weights.IMAGENET1K_V1)
 
 models = {'resnet': resnet18, 'alexnet': alexnet, 'vgg': vgg16}
 
@@ -69,6 +70,6 @@ def classifier(img_path, model_name):
         output = model(data)
 
     # return index corresponding to predicted class
-    pred_idx = output.data.numpy().argmax()
+    pred_idx = output.detach().cpu().numpy().argmax()
 
     return imagenet_classes_dict[pred_idx]
