@@ -70,8 +70,8 @@ def calculates_results_stats(results_dic):
     results_stats_dic['n_dogs_img'] = sum(1 for value in results_dic.values() if value[3] == 1)
     results_stats_dic['n_notdogs_img'] = sum(1 for value in results_dic.values() if value[3] == 0)
     results_stats_dic['n_match'] = sum(1 for value in results_dic.values() if value[2] == 1)
-    results_stats_dic['n_correct_dogs'] = sum(1 for value in results_dic.values() if value[4] == 1)
-    results_stats_dic['n_correct_notdogs'] = sum(1 for value in results_dic.values() if value[4] == 0)  
+    results_stats_dic['n_correct_dogs'] = sum(1 for value in results_dic.values() if value[3] == 1 and value[4] == 1)
+    results_stats_dic['n_correct_notdogs'] = sum(1 for value in results_dic.values() if value[3] == 0 and value[4] == 0)  
     results_stats_dic['n_correct_breed'] = sum(1 for value in results_dic.values() if value[3] == 1 and value[2] == 1)
     results_stats_dic['pct_match'] = results_stats_dic['n_match'] / results_stats_dic['n_images'] * 100
     results_stats_dic['pct_correct_dogs'] = results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img'] * 100
