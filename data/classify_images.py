@@ -63,9 +63,9 @@ def classify_images(images_dir, results_dic, model):
     for key, value in results_dic.items():
       path = os.path.join(images_dir, key)
       classifier_label = classifier(path, model).lower().strip()
-      if value in classifier_label:
-        results_dic[key] = [value, classifier_label, 1]
+      if value[0] in classifier_label:
+        value.extend([classifier_label, 1])
       else:
-        results_dic[key] = [value, classifier_label, 0]
+        value.extend([classifier_label, 0])
     
     return None

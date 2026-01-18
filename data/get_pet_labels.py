@@ -42,11 +42,13 @@ def get_pet_labels(image_dir):
     for filename in filenames:
       if filename not in results_dict:
         pet_name_list = filename.lower().split("_")
-        pet_name = ""
+        pet_name_parts = []
         for name in pet_name_list:
           if name.isalpha():
-            pet_name += name + " "
-
-        results_dict[filename] = pet_name.strip()
+            pet_name_parts.append(name.strip())
+        
+        # Join the parts into a single string and put it in a list
+        pet_name = " ".join(pet_name_parts)
+        results_dict[filename] = [pet_name]
       
     return results_dict
