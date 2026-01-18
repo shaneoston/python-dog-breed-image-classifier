@@ -1,0 +1,66 @@
+
+     MATCH:
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:                          boxer
+
+                   Duck_01.jpg: 
+Real:                       duck   Classifier:                          goose
+
+                   Dog_02.jpeg: 
+Real:                        dog   Classifier:                          boxer
+
+                 Object_01.jpg: 
+Real:                     object   Classifier:           iron, smoothing iron
+
+# Total Images 4 # Matches: 0 # NOT Matches: 4
+
+     MATCH:
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:                          boxer  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                   Duck_01.jpg: 
+Real:                       duck   Classifier:                          goose  
+PetLabelDog: 0  ClassLabelDog: 0
+
+                   Dog_02.jpeg: 
+Real:                        dog   Classifier:                          boxer  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                 Object_01.jpg: 
+Real:                     object   Classifier:           iron, smoothing iron  
+PetLabelDog: 0  ClassLabelDog: 0
+
+# Total Images 4 # Matches: 0 # NOT Matches: 4
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+
+*** Results Summary for CNN Model Architecture ALEXNET ***
+--------------------------------------------------
+N Images            :   4
+N Dog Images        :   2
+N Not-Dog Images    :   2
+--------------------------------------------------
+Percent of Correct Dogs: 100.0%
+Percent of Correct Breeds:   0.0%
+Percent of Correct Not-Dogs: 100.0%
+--------------------------------------------------
+Incorrectly Classified Dogs:
+Incorrectly Classified Breeds:
+Dog_01.jpg          
+Dog_02.jpeg         
+
+** Total Elapsed Runtime: 0:0:0
