@@ -44,8 +44,7 @@ def get_pet_labels(image_dir):
         pet_name_list = filename.lower().split("_")
         pet_name = ""
         for name in pet_name_list:
-          if name.isalpha():
-            pet_name = " ".join([name for name in pet_name_list if name.isalpha()])
+          pet_name = " ".join([name for name in pet_name_list if name.isalpha()])
         
         results_dict[filename] = [pet_name]
 
