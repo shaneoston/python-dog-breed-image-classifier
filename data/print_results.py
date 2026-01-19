@@ -26,11 +26,8 @@
 #         This function does not output anything other than printing a summary
 #         of the final results.
 ##
-# TODO 6: Define print_results function below, specifically replace the None
-#       below by the function definition of the print_results function. 
-#       Notice that this function doesn't to return anything because it  
-#       prints a summary of the results using results_dic and results_stats_dic
-# 
+import textwrap
+
 def print_results(results_dic, results_stats_dic, model, 
                   print_incorrect_dogs = False, print_incorrect_breed = False):
     """
@@ -73,15 +70,39 @@ def print_results(results_dic, results_stats_dic, model,
     print(f"{'Percent of Correct Breeds':<20}: {results_stats_dic['pct_correct_breed']:>5.1f}%")
     print(f"{'Percent of Correct Not-Dogs':<20}: {results_stats_dic['pct_correct_notdogs']:>5.1f}%")
     print(f"{'-'*50}")
-    if print_incorrect_dogs:
-        print(f"{'Incorrectly Classified Dogs:':<20}")
+
+    filename_w = 40
+    real_w = 25
+    classifier_w = 60
+
+    def _print_misclassified_row(filename: str, real: str, classifier: str) -> None:
+        classifier_lines = textwrap.wrap(classifier, width=classifier_w) or [""]
+        print(f"{filename:<{filename_w}}  {real:<{real_w}}  {classifier_lines[0]}")
+        for line in classifier_lines[1:]:
+            print(f"{'':<{filename_w}}  {'':<{real_w}}  {line}")
+
+    # Print incorrectly classified dogs (dog <-> not-dog) with real + classifier labels
+    if (print_incorrect_dogs and
+        ((results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'])
+         != results_stats_dic['n_images'])):
+        print("\nINCORRECT Dog/NOT Dog Assignments:")
+        print(f"{'Filename':<{filename_w}}  {'Real':<{real_w}}  Classifier")
+        print(f"{'-'*filename_w}  {'-'*real_w}  {'-'*classifier_w}")
         for key, value in results_dic.items():
-            if value[3] == 0 and value[4] == 1:
-                print(f"{key:<20}")
-    if print_incorrect_breed:
-        print(f"{'Incorrectly Classified Breeds:':<20}")
+            # Pet Image Label is a Dog - Classified as NOT-a-DOG  OR
+            # Pet Image Label is NOT-a-Dog - Classified as a-DOG
+            if sum(value[3:]) == 1:
+                _print_misclassified_row(key, value[0], value[1])
+
+    # Print incorrectly classified dog breeds with real + classifier labels
+    if (print_incorrect_breed and
+        (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
+        print("\nINCORRECT Dog Breed Assignment:")
+        print(f"{'Filename':<{filename_w}}  {'Real':<{real_w}}  Classifier")
+        print(f"{'-'*filename_w}  {'-'*real_w}  {'-'*classifier_w}")
         for key, value in results_dic.items():
-            if value[3] == 1 and value[2] == 0:
-                print(f"{key:<20}")
+            # Pet Image Label is-a-Dog, classified as-a-dog but is WRONG breed
+            if sum(value[3:]) == 2 and value[2] == 0:
+                _print_misclassified_row(key, value[0], value[1])
     return None
                 

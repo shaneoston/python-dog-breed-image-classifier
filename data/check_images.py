@@ -23,7 +23,6 @@
 ##
 
 # Imports python modules
-# DELETE: from time import time as time_module, sleep
 import time
 
 # Imports print functions that check the lab
